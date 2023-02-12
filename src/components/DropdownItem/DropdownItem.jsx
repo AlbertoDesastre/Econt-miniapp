@@ -5,7 +5,7 @@ const DropdownItem = ({
   regionNameEn,
   expressCityDeliveries,
 }) => {
-  console.log("key", id);
+  /*  console.log("key", id); */
   return (
     // to be displayed as a grid, probably
     <li key={id}>
