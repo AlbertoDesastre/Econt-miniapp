@@ -1,7 +1,7 @@
 import "./Header.scss";
 
-const Header = () => {
-  return <header></header>;
+const Header = ({ children }) => {
+  return <header>{children}</header>;
 };
 
 export default Header;
