@@ -4,38 +4,19 @@ import LoadingMessage from "./components/LoadingMessage/LoadingMessage";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import DropdownItem from "./components/DropdownItem/DropdownItem";
 import { useState } from "react";
-import usePostApi from "./services/useFetchData";
+import usePostApi from "./services/usePostApi";
 
 function App() {
-  const loading = true;
-  const error = true;
-  const exampleArray = [
-    {
-      id: 1,
-      postalCode: 1,
-      nameEn: "Office 1",
-      regionNameEn: "RegionName1",
-      expressCityDeliveries: true,
-    },
-    {
-      id: 212,
-      postalCode: 2,
-      nameEn: "Office 2",
-      regionNameEn: "RegionName2",
-      expressCityDeliveries: true,
-    },
-    {
-      id: 311,
-      postalCode: 3,
-      nameEn: "Office 3",
-      regionNameEn: "RegionName3",
-      expressCityDeliveries: false,
-    },
-  ];
-
-  usePostApi(process.env.REACT_APP_API_URL_CITIES, { countryCode: "BGR" });
-
   const [displayDropdown, setDisplayDropdown] = useState(false);
+  const { data, loading, error } = usePostApi(
+    process.env.REACT_APP_API_URL_CITIES,
+    { countryCode: "BGR" }
+  );
+  /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
+  const cities = data.cities;
+  console.log(cities);
+  console.log(loading);
+
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
   };
@@ -52,15 +33,18 @@ function App() {
         {/* This button is rendered inside the <ul> tag in the <DropdownMenu>, is this correct, is it a bad practice? */}
         <button onClick={onClick}>Show available cities</button>
 
+        {/* An error telling that each child in a list should have an unique id is constantly appearing,
+         even though I'm giving every <li> an id. Is this a react bug? */}
         {displayDropdown &&
-          exampleArray.map((element) => {
+          !!cities &&
+          cities.map((city) => {
             return (
               <DropdownItem
-                id={element.id}
-                postalCode={element.postalCode}
-                nameEn={element.nameEn}
-                regionNameEn={element.regionNameEn}
-                expressCityDeliveries={element.expressCityDeliveries}
+                id={city.id}
+                postalCode={city.postalCode}
+                nameEn={city.nameEn}
+                regionNameEn={city.regionNameEn}
+                expressCityDeliveries={city.expressCityDeliveries}
               />
             );
           })}
