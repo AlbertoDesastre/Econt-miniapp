@@ -4,6 +4,7 @@ import LoadingMessage from "./components/LoadingMessage/LoadingMessage";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import DropdownItem from "./components/DropdownItem/DropdownItem";
 import { useState } from "react";
+import usePostApi from "./services/useFetchData";
 
 function App() {
   const loading = true;
@@ -32,6 +33,8 @@ function App() {
     },
   ];
 
+  usePostApi(process.env.REACT_APP_API_URL_CITIES, { countryCode: "BGR" });
+
   const [displayDropdown, setDisplayDropdown] = useState(false);
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -41,8 +44,10 @@ function App() {
     <div className="App">
       <h1>I'm working</h1>
       <DropdownMenu>
-        {loading && <LoadingMessage />}
-        {error && <ErrorMessage />}
+        {loading && (
+          <LoadingMessage message={"Loading your cities, please stand by..."} />
+        )}
+        {error && <ErrorMessage message={"An error ocurred, call support."} />}
 
         {/* This button is rendered inside the <ul> tag in the <DropdownMenu>, is this correct, is it a bad practice? */}
         <button onClick={onClick}>Show available cities</button>
