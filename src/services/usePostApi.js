@@ -26,7 +26,7 @@ export default function usePostApi(url, body) {
       setLoading(false);
     };
     postData();
-  }, []);
+  }, [url]);
 
   return { data, loading, error };
 }
