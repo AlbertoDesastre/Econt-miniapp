@@ -7,6 +7,7 @@ import { useState } from "react";
 import usePostApi from "./services/usePostApi";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
+import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
 
 function App() {
   const [displayDropdown, setDisplayDropdown] = useState(false);
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Header>
-        <img src={econt}></img>
+        <img src={econt} alt="econt bussiness "></img>
         <h2>ECONT IMPLEMENTATION</h2>
       </Header>
       <section>
@@ -33,30 +34,37 @@ function App() {
           <LoadingMessage message="Loading your cities, please stand by..." />
         )}
         {error && <ErrorMessage message={"An error ocurred, call support."} />}
-        <button onClick={onClick}>Show available cities</button>
-        <DropdownMenu>
-          {/* An error telling that each child in a list should have an unique id is constantly appearing,
-         even though I'm giving every <li> an id. Is this a react bug? */}
+        <button className="button show-dropdown " onClick={onClick}>
+          Show available cities
+        </button>
 
-          {/* Para mañana hacer un DropdowItem skeleton, que se pondrá al lado del botoncito de "enseñar ciudades disponibles"
-        , y es como dandole una pista al usuario de qué se pude esperar al pulsar el botón. Luego, cuando el usuario de al botón,
-        se le añadirá una clase nueva al DropdownItem skeleton, para que haga una animación chiquitita, y luego se muestra el dropdown,
-        con un tope de ciudades que se muestran a la vez...
-        */}
-          {displayDropdown &&
-            !loading &&
-            cities.map((city) => {
-              return (
-                <DropdownItem
-                  id={city.id}
-                  postalCode={city.postalCode}
-                  nameEn={city.nameEn}
-                  regionNameEn={city.regionNameEn}
-                  expressCityDeliveries={city.expressCityDeliveries}
-                />
-              );
-            })}
-        </DropdownMenu>
+        {!displayDropdown && <DropdownSkeleton />}
+
+        {displayDropdown && !loading && (
+          <DropdownMenu>
+            {/* An error telling that each child in a list should have an unique id is constantly appearing,
+       even though I'm giving every <li> an id. Is this a react bug? */}
+
+            {/* Para mañana hacer un DropdowItem skeleton, que se pondrá al lado del botoncito de "enseñar ciudades disponibles"
+      , y es como dandole una pista al usuario de qué se pude esperar al pulsar el botón. Luego, cuando el usuario de al botón,
+      se le añadirá una clase nueva al DropdownItem skeleton, para que haga una animación chiquitita, y luego se muestra el dropdown,
+      con un tope de ciudades que se muestran a la vez...
+      */}
+            {displayDropdown &&
+              !loading &&
+              cities.map((city) => {
+                return (
+                  <DropdownItem
+                    id={city.id}
+                    postalCode={city.postalCode}
+                    nameEn={city.nameEn}
+                    regionNameEn={city.regionNameEn}
+                    expressCityDeliveries={city.expressCityDeliveries}
+                  />
+                );
+              })}
+          </DropdownMenu>
+        )}
       </section>
     </div>
   );
