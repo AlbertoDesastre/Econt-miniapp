@@ -4,6 +4,7 @@
   background-color: rgb(231, 231, 231);
 
   section {
+    height: 100%;
     margin-top: 18px;
     display: flex;
     justify-content: space-around;
@@ -18,4 +19,6 @@ button.show-dropdown {
   font-weight: bold;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  width: 120px;
+  height: 50px;
 }

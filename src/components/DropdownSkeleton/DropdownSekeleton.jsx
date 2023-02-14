@@ -1,41 +1,51 @@
 import { useState } from "react";
-import "./DropdownSkeleton.scss";
+import DropdownItem from "../DropdownItem/DropdownItem";
+import "../DropdownMenu/DropdownMenu.scss";
 
 const DropdownSkeleton = () => {
   // eslint-disable-next-line
-  const [displayList, setDisplayList] = useState(true);
+  const [displayList, setDisplayList] = useState(false);
   const onClick = () => {
     setDisplayList(!displayList);
   };
 
   return (
     <div className="dropdown-container dropdown-skeleton">
-      <ul className="dropdown" onClick={onClick}>
-        <p>Econt offices</p>
+      <p className="dropdown-title" onClick={onClick}>
+        Econt offices
+      </p>
+
+      <ul className="dropdown">
         {displayList && (
           <>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
           </>
         )}
       </ul>
-      <p className="dropdown-arrow" onClick={onClick}>
+      {/*       <p className="dropdown-arrow" onClick={onClick}>
         {" "}
         V{" "}
-      </p>
+      </p> */}
     </div>
   );
 };
