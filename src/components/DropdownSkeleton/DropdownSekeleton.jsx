@@ -3,7 +3,7 @@ import "./DropdownSkeleton.scss";
 
 const DropdownSkeleton = () => {
   // eslint-disable-next-line
-  const [displayList, setDisplayList] = useState(true);
+  const [displayList, setDisplayList] = useState(false);
   const onClick = () => {
     setDisplayList(!displayList);
   };

@@ -7,6 +7,7 @@
   .dropdown-title {
     text-align: center;
     margin-top: 2px;
+    cursor: pointer;
   }
 
   .dropdown-arrow,
@@ -15,8 +16,7 @@
   }
 
   .dropdown {
-    width: 100%;
-    text-align: center;
+    width: 210px;
     margin-top: -8px;
 
     .dropdown-li {
@@ -24,6 +24,7 @@
       max-height: 65px;
       background-color: white;
       border: 2px solid black;
+      margin-left: -2px;
     }
     .dropdown-li:first-child {
       margin-top: 15px;
