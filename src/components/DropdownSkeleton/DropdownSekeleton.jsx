@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DropdownItem from "../DropdownItem/DropdownItem";
 import "./DropdownSkeleton.scss";
 
 const DropdownSkeleton = () => {
@@ -17,21 +18,27 @@ const DropdownSkeleton = () => {
       <ul className="dropdown">
         {displayList && (
           <>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
-            <li className="dropdown-li">
-              <p>Dedovo, in Plovdiv</p>
-              <p>Has express delivery? No </p>
-              <p>Postal code: 4106</p>
-            </li>
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
+            <DropdownItem
+              id={1}
+              postalCode={4106}
+              nameEn={"Dedovo"}
+              regionNameEn={"Plovdiv"}
+              expressCityDeliveries={true}
+            />
           </>
         )}
       </ul>

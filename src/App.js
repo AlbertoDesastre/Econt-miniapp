@@ -45,11 +45,6 @@ function App() {
             {/* An error telling that each child in a list should have an unique id is constantly appearing,
        even though I'm giving every <li> an id. Is this a react bug? */}
 
-            {/* Para mañana hacer un DropdowItem skeleton, que se pondrá al lado del botoncito de "enseñar ciudades disponibles"
-      , y es como dandole una pista al usuario de qué se pude esperar al pulsar el botón. Luego, cuando el usuario de al botón,
-      se le añadirá una clase nueva al DropdownItem skeleton, para que haga una animación chiquitita, y luego se muestra el dropdown,
-      con un tope de ciudades que se muestran a la vez...
-      */}
             {displayDropdown &&
               !loading &&
               cities.map((city) => {
