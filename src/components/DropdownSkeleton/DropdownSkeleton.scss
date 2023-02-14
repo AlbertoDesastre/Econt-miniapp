@@ -18,6 +18,8 @@
   .dropdown {
     width: 210px;
     margin-top: -8px;
+    max-height: 400px;
+    overflow-y: scroll;
 
     .dropdown-li {
       width: 100%;

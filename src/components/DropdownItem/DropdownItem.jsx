@@ -8,7 +8,7 @@ const DropdownItem = ({
   /*  console.log("key", id); */
   return (
     // to be displayed as a grid, probably
-    <li key={id}>
+    <li key={id} className="dropdown-li">
       <p>
         {nameEn}, in {regionNameEn}
       </p>
