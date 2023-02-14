@@ -1,3 +1,5 @@
+import "../DropdownMenu/DropdownMenu.scss";
+
 const DropdownItem = ({
   id,
   postalCode,

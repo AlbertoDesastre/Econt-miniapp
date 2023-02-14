@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DropdownItem from "../DropdownItem/DropdownItem";
-import "./DropdownSkeleton.scss";
+import "../DropdownMenu/DropdownMenu.scss";
 
 const DropdownSkeleton = () => {
   // eslint-disable-next-line

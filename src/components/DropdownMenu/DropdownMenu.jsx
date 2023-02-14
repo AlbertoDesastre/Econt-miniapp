@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../DropdownSkeleton/DropdownSkeleton.scss";
+import "./DropdownMenu.scss";
 
 const DropdownMenu = ({ children }) => {
   return (

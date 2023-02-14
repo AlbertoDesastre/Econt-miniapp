@@ -37,14 +37,13 @@ function App() {
         <button className="button show-dropdown " onClick={onClick}>
           Show available cities
         </button>
-
+        {/* If user didn't click on the "Show cities" fake ones will be rendered */}
         {!displayDropdown && <DropdownSkeleton />}
 
         {displayDropdown && !loading && (
           <DropdownMenu>
             {/* An error telling that each child in a list should have an unique id is constantly appearing,
        even though I'm giving every <li> an id. Is this a react bug? */}
-
             {displayDropdown &&
               !loading &&
               cities.map((city) => {
