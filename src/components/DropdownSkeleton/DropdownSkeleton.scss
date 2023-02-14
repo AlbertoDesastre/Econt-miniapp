@@ -1,7 +1,4 @@
-.dropdown {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.dropdown-container {
   border: 2px solid black;
   background-color: white;
   width: 210px;
@@ -11,17 +8,16 @@
     cursor: pointer;
   }
 
-  .dropdown-ul {
-    display: flex;
-    flex-direction: column;
+  .dropdown {
     text-align: center;
+    cursor: pointer;
 
     p {
       margin-top: 3px;
     }
 
     .dropdown-li {
-      width: 180px;
+      width: 208px;
       margin-top: 6px;
       background-color: white;
       border: 1px solid black;
