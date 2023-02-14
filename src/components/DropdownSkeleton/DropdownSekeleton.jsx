@@ -10,8 +10,11 @@ const DropdownSkeleton = () => {
 
   return (
     <div className="dropdown-container dropdown-skeleton">
-      <ul className="dropdown" onClick={onClick}>
-        <p>Econt offices</p>
+      <p className="dropdown-title" onClick={onClick}>
+        Econt offices
+      </p>
+
+      <ul className="dropdown">
         {displayList && (
           <>
             <li className="dropdown-li">
@@ -32,10 +35,10 @@ const DropdownSkeleton = () => {
           </>
         )}
       </ul>
-      <p className="dropdown-arrow" onClick={onClick}>
+      {/*       <p className="dropdown-arrow" onClick={onClick}>
         {" "}
         V{" "}
-      </p>
+      </p> */}
     </div>
   );
 };
