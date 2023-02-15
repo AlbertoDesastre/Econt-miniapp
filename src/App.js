@@ -22,16 +22,20 @@ function App() {
   );
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
-  /*   console.log(cities); */
   let searchedCities = [];
+  /*   console.log(cities); */
+
   if (searchValue.length >= 1) {
     searchedCities = cities.filter((city) => {
-      searchValue.toLowerCase();
-      city.nameEn.toLowerCase();
+      searchValue.toLocaleLowerCase();
+      city.regionNameEn.toLocaleLowerCase();
 
       return city.nameEn.includes(searchValue);
     });
+  } else {
+    searchedCities = cities;
   }
+
   console.log(searchedCities);
 
   const onClick = () => {
@@ -63,7 +67,7 @@ function App() {
           <DropdownMenu title={"Econt offices"}>
             {displayDropdown &&
               !loading &&
-              cities.map((city) => {
+              searchedCities.map((city) => {
                 return (
                   <DropdownItem
                     id={city.id}
