@@ -14,20 +14,25 @@ import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
   const [displayDropdown, setDisplayDropdown] = useState(false);
-  /*   const { data, loading, error } = usePostApi(
+  const [searchValue, setSearchValue] = useState("");
+
+  const { data, loading, error } = usePostApi(
     process.env.REACT_APP_API_URL_CITIES,
     { countryCode: "BGR" }
-  ); */
-  const { data } = usePostApi(process.env.REACT_APP_API_URL_CITIES, {
-    countryCode: "BGR",
-  });
-
-  const loading = true;
-  const error = true;
-
+  );
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
   /*   console.log(cities); */
+  let searchedCities = [];
+  if (searchValue.length >= 1) {
+    searchedCities = cities.filter((city) => {
+      searchValue.toLowerCase();
+      city.nameEn.toLowerCase();
+
+      return city.nameEn.includes(searchValue);
+    });
+  }
+  console.log(searchedCities);
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -44,7 +49,10 @@ function App() {
       >
         <UserInputs>
           <DropdownMenu title={"Cities"} />
-          <SearchCities />
+          <SearchCities
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
           <button className="button show-dropdown " onClick={onClick}>
             Search
           </button>

@@ -5,7 +5,9 @@ const SearchCities = ({ searchValue, setSearchValue }) => {
     <>
       <input
         value={searchValue}
-        onChange={setSearchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
         className="input input-searchCities"
         placeholder={"I want offices in..."}
       ></input>
