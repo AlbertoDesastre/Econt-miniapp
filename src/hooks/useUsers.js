@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useLocalStorage from "./useLocalStorage";
 
-const useUsers = (props) => {
+const useUsers = () => {
   const users = [
     { id: 1, name: "Dimitri", region: "Plovdiv", city: "Asenovgrad" },
     { id: 2, name: "Alberto", region: "Burgas", city: "Pomorie" },
@@ -11,7 +11,10 @@ const useUsers = (props) => {
     { id: 6, name: "Olena", region: "Blagoevgrad", city: "Bansko" },
   ];
 
-  return {};
+  /*   const { saveItems } = useLocalStorage("users", []);
+  saveItems(users); */
+
+  return { users };
 };
 
 export default useUsers;

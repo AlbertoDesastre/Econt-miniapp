@@ -13,6 +13,8 @@ import MainContent from "./components/MainContent/MainContent";
 import UserInputs from "./components/UserInputs/UserInputs";
 import UserSelection from "./components/UserSelection/UserSelection";
 import UserProfile from "./components/UserProfile/UserProfile";
+import useUsers from "./hooks/useUsers";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const {
@@ -24,6 +26,8 @@ function App() {
     setDisplayDropdown,
     setSearchValue,
   } = useCities();
+
+  const { users } = useUsers();
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
