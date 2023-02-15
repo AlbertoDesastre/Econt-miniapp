@@ -4,7 +4,7 @@ import LoadingMessage from "./components/LoadingMessage/LoadingMessage";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import DropdownItem from "./components/DropdownItem/DropdownItem";
 import { useState } from "react";
-import usePostApi from "./services/usePostApi";
+import useCities from "./hooks/useCities";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
 import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
@@ -13,29 +13,15 @@ import MainContent from "./components/MainContent/MainContent";
 import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
-  const [displayDropdown, setDisplayDropdown] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-
-  const { data, loading, error } = usePostApi(
-    process.env.REACT_APP_API_URL_CITIES,
-    { countryCode: "BGR" }
-  );
-  /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
-  const cities = data.cities;
-  let searchedCities = [];
-  /*   console.log(cities); */
-
-  if (searchValue.length >= 1) {
-    searchedCities = cities.filter((city) => {
-      searchValue.toLocaleLowerCase();
-      city.regionNameEn.toLocaleLowerCase();
-
-      return city.regionNameEn.includes(searchValue);
-    });
-  } else {
-    searchedCities = cities;
-  }
-  console.log(searchedCities);
+  const {
+    searchedCities,
+    loading,
+    error,
+    displayDropdown,
+    searchValue,
+    setDisplayDropdown,
+    setSearchValue,
+  } = useCities();
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -60,7 +46,6 @@ function App() {
             Search
           </button>
         </UserInputs>
-        {/*--- MAIN SECTION --- */}
         {!displayDropdown && <DropdownSkeleton />}
         {displayDropdown && !loading && (
           <DropdownMenu title={"Econt offices"}>
@@ -79,7 +64,6 @@ function App() {
               })}
           </DropdownMenu>
         )}
-        {/*--- MAIN SECTION --- */}
       </MainContent>
     </div>
   );
