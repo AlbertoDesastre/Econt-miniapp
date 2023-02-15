@@ -1,0 +1,15 @@
+.main-section {
+  height: 100%;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  div.messages-container {
+    align-self: center;
+  }
+  div.dropdowns-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}

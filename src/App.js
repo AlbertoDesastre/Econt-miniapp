@@ -8,16 +8,34 @@ import usePostApi from "./services/usePostApi";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
 import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
+import SearchCities from "./components/SearchCities/SearchCities";
+import MainContent from "./components/MainContent/MainContent";
+import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
   const [displayDropdown, setDisplayDropdown] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
   const { data, loading, error } = usePostApi(
     process.env.REACT_APP_API_URL_CITIES,
     { countryCode: "BGR" }
   );
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
+  let searchedCities = [];
   /*   console.log(cities); */
+
+  if (searchValue.length >= 1) {
+    searchedCities = cities.filter((city) => {
+      searchValue.toLocaleLowerCase();
+      city.regionNameEn.toLocaleLowerCase();
+
+      return city.regionNameEn.includes(searchValue);
+    });
+  } else {
+    searchedCities = cities;
+  }
+  console.log(searchedCities);
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -25,32 +43,34 @@ function App() {
 
   return (
     <div className="App">
-      <Header>
-        <img src={econt} alt="econt bussiness "></img>
-        <h2>ECONT IMPLEMENTATION</h2>
-      </Header>
-      <section>
-        {loading && (
-          <LoadingMessage message="Loading your cities, please stand by..." />
-        )}
-        {error && <ErrorMessage message={"An error ocurred, call support."} />}
-        <button className="button show-dropdown " onClick={onClick}>
-          Show available cities
-        </button>
-        {/* If user didn't click on the "Show cities" fake ones will be rendered */}
+      <Header imgSrc={econt} />
+      <MainContent
+        error={error}
+        loading={loading}
+        onError={() => <ErrorMessage />}
+        onLoading={() => <LoadingMessage />}
+      >
+        <UserInputs>
+          <DropdownMenu title={"Cities"} />
+          <SearchCities
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+          <button className="button show-dropdown " onClick={onClick}>
+            Search
+          </button>
+        </UserInputs>
+        {/*--- MAIN SECTION --- */}
         {!displayDropdown && <DropdownSkeleton />}
-
         {displayDropdown && !loading && (
-          <DropdownMenu>
-            {/* An error telling that each child in a list should have an unique id is constantly appearing,
-       even though I'm giving every <li> an id. Is this a react bug? */}
+          <DropdownMenu title={"Econt offices"}>
             {displayDropdown &&
               !loading &&
-              cities.map((city) => {
+              searchedCities.map((city) => {
                 return (
                   <DropdownItem
                     id={city.id}
-                    postalCode={city.postalCode}
+                    postalCode={city.postCode}
                     nameEn={city.nameEn}
                     regionNameEn={city.regionNameEn}
                     expressCityDeliveries={city.expressCityDeliveries}
@@ -59,7 +79,8 @@ function App() {
               })}
           </DropdownMenu>
         )}
-      </section>
+        {/*--- MAIN SECTION --- */}
+      </MainContent>
     </div>
   );
 }
