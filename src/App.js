@@ -8,6 +8,9 @@ import usePostApi from "./services/usePostApi";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
 import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
+import SearchCities from "./components/SearchCities/SearchCities";
+import MainContent from "./components/MainContent/MainContent";
+import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
   const [displayDropdown, setDisplayDropdown] = useState(false);
@@ -25,15 +28,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header>
-        <img src={econt} alt="econt bussiness "></img>
-        <h2>ECONT IMPLEMENTATION</h2>
-      </Header>
-      <section>
+      <Header imgSrc={econt} />
+      <MainContent>
         {loading && (
           <LoadingMessage message="Loading your cities, please stand by..." />
         )}
         {error && <ErrorMessage message={"An error ocurred, call support."} />}
+
+        {/* <UserInputs></UserInputs> */}
+
         <button className="button show-dropdown " onClick={onClick}>
           Show available cities
         </button>
@@ -59,7 +62,7 @@ function App() {
               })}
           </DropdownMenu>
         )}
-      </section>
+      </MainContent>
     </div>
   );
 }
