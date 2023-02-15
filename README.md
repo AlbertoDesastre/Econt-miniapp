@@ -26,8 +26,15 @@ Pendiente de renderizarlo solo cuando la llamada a la API haya sido terminada.
   Desplegar todas las oficinas segun los requerimientos del método.
   Filtrar oficinas/ciucades por el input.
 
-- Modulo post API & Usuario
-  ...
+- Importante!!
+  Para qeu las llamadas a la API y el dropdown sean muy veloces, podemos hacer la primera llamada con todas las ciudades como recomienda Econt, 1 vez al día. Luego, cuando el usuario entre en la pestaña de compra, hacer el filtrado de la ciudad que tiene guardada en su perfil.
+
+De tal forma que cuando vaya al menu de dropdown, no tengamos que hacer ningun llamado a la API y solo lo hayamos tenido que hacer una vez.
+
+Por supeusto se le dara la opcion de "elegir ciudad" al usuario en la pantalla de compra por si quiere cambiar de ciudad...
+
+Otra posibilidad es que siempre se realice un checkeo de la ciudad del usuario y, cuando esta cambie, hacer de nuevo el filtro de las oficinas segun la ciudad de su perfil.
+...
 
 # Pendientes de SCSS
 
