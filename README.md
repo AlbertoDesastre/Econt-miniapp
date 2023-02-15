@@ -1,7 +1,3 @@
-#Bugs
-
-Si apreto nada mas entrar "show cities" la pagina se rompe porqeu no terminó la request a la API
-
 #Dropdown Skeleton
 
 Se supone que el Skeleton es para cuando no ha terminado de cargar la llamada a la API. Ahora mismo es un componente estatico que esta por estar.
