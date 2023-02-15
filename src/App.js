@@ -18,6 +18,7 @@ function App() {
     process.env.REACT_APP_API_URL_CITIES,
     { countryCode: "BGR" }
   );
+
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
   /*   console.log(cities); */
@@ -29,24 +30,22 @@ function App() {
   return (
     <div className="App">
       <Header imgSrc={econt} />
-      <MainContent>
-        {loading && (
-          <LoadingMessage message="Loading your cities, please stand by..." />
-        )}
-        {error && <ErrorMessage message={"An error ocurred, call support."} />}
-
-        {/* <UserInputs></UserInputs> */}
-
-        <button className="button show-dropdown " onClick={onClick}>
-          Show available cities
-        </button>
-        {/* If user didn't click on the "Show cities" fake ones will be rendered */}
+      <MainContent
+        error={error}
+        loading={loading}
+        onError={() => <ErrorMessage />}
+        onLoading={() => <LoadingMessage />}
+      >
+        <UserInputs>
+          <button className="button show-dropdown " onClick={onClick}>
+            Show available cities
+          </button>
+          <SearchCities />
+        </UserInputs>
+        {/*--- MAIN SECTION --- */}
         {!displayDropdown && <DropdownSkeleton />}
-
         {displayDropdown && !loading && (
           <DropdownMenu>
-            {/* An error telling that each child in a list should have an unique id is constantly appearing,
-       even though I'm giving every <li> an id. Is this a react bug? */}
             {displayDropdown &&
               !loading &&
               cities.map((city) => {
@@ -62,6 +61,7 @@ function App() {
               })}
           </DropdownMenu>
         )}
+        {/*--- MAIN SECTION --- */}
       </MainContent>
     </div>
   );

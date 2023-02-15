@@ -1,7 +1,7 @@
 import "./LoadingMessage.scss";
 
-const LoadingMessage = ({ message }) => {
-  return <p className="loading">{message}</p>;
+const LoadingMessage = () => {
+  return <p className="loading">Loading your cities, please stand by...</p>;
 };
 
 export default LoadingMessage;
