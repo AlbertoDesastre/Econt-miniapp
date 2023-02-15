@@ -14,6 +14,7 @@ import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
   const {
+    cities,
     searchedCities,
     loading,
     error,

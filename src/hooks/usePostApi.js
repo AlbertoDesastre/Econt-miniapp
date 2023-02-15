@@ -17,13 +17,14 @@ export default function usePostApi(url, body) {
         .then((response) => response.json())
         .then((data) => {
           /* console.log("log de la data:", data); */
+          setLoading(false);
           setData(data);
         })
         .catch((error) => {
           /*    console.log(error); */
+          setLoading(false);
           setError(error);
         });
-      setLoading(false);
     };
     postData();
   }, [url]);
