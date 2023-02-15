@@ -11,6 +11,8 @@ import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
 import SearchCities from "./components/SearchCities/SearchCities";
 import MainContent from "./components/MainContent/MainContent";
 import UserInputs from "./components/UserInputs/UserInputs";
+import UserSelection from "./components/UserSelection/UserSelection";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
   const {
@@ -30,6 +32,10 @@ function App() {
   return (
     <div className="App">
       <Header imgSrc={econt} />
+
+      <UserSelection>
+        <UserProfile />
+      </UserSelection>
       <MainContent
         error={error}
         loading={loading}
