@@ -1,0 +1,13 @@
+article.inputs-container {
+  display: flex;
+
+  div.dropdown-container,
+  input.input-searchCities,
+  button.show-dropdown {
+    max-height: 30px;
+  }
+
+  div.dropdown-container {
+    max-width: 80px;
+  }
+}

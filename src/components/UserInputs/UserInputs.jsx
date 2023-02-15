@@ -1,3 +1,5 @@
+import "./UserInputs.scss";
+
 const UserInputs = ({ children }) => {
   return (
     <article className="inputs-container article-user-inputs">

@@ -14,10 +14,16 @@ import UserInputs from "./components/UserInputs/UserInputs";
 
 function App() {
   const [displayDropdown, setDisplayDropdown] = useState(false);
-  const { data, loading, error } = usePostApi(
+  /*   const { data, loading, error } = usePostApi(
     process.env.REACT_APP_API_URL_CITIES,
     { countryCode: "BGR" }
-  );
+  ); */
+  const { data } = usePostApi(process.env.REACT_APP_API_URL_CITIES, {
+    countryCode: "BGR",
+  });
+
+  const loading = true;
+  const error = true;
 
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
@@ -37,15 +43,16 @@ function App() {
         onLoading={() => <LoadingMessage />}
       >
         <UserInputs>
-          <button className="button show-dropdown " onClick={onClick}>
-            Show available cities
-          </button>
+          <DropdownMenu title={"Cities"} />
           <SearchCities />
+          <button className="button show-dropdown " onClick={onClick}>
+            Search
+          </button>
         </UserInputs>
         {/*--- MAIN SECTION --- */}
         {!displayDropdown && <DropdownSkeleton />}
         {displayDropdown && !loading && (
-          <DropdownMenu>
+          <DropdownMenu title={"Econt offices"}>
             {displayDropdown &&
               !loading &&
               cities.map((city) => {
