@@ -30,12 +30,11 @@ function App() {
       searchValue.toLocaleLowerCase();
       city.regionNameEn.toLocaleLowerCase();
 
-      return city.nameEn.includes(searchValue);
+      return city.regionNameEn.includes(searchValue);
     });
   } else {
     searchedCities = cities;
   }
-
   console.log(searchedCities);
 
   const onClick = () => {
@@ -71,7 +70,7 @@ function App() {
                 return (
                   <DropdownItem
                     id={city.id}
-                    postalCode={city.postalCode}
+                    postalCode={city.postCode}
                     nameEn={city.nameEn}
                     regionNameEn={city.regionNameEn}
                     expressCityDeliveries={city.expressCityDeliveries}
