@@ -22,7 +22,7 @@ function App() {
     setDisplayOffices(!displayOffices);
   };
   const {
-    cities,
+    offices,
     searchedCities,
     loading,
     error,
@@ -33,6 +33,7 @@ function App() {
   } = useCities();
 
   const { users, userSelected, setUserSelected } = useUsers();
+  console.log(offices);
   /*   console.log(users); */
 
   const onClick = () => {
@@ -103,15 +104,15 @@ function App() {
             {displayDropdown &&
               !loading &&
               displayOffices &&
-              searchedCities.map((city) => {
+              offices.map((office) => {
                 return (
                   <DropdownItem
-                    id={1}
-                    postalCode={1}
-                    nameEn={1}
-                    regionNameEn={1}
-                    expressCityDeliveries={1}
-                    cityId={1}
+                    id={office.id}
+                    postalCode={office.address.city.postCode}
+                    nameEn={office.nameEn}
+                    address={office.address.fullAddressEn}
+                    normalBusinessHoursFrom={office.normalBusinessHoursFrom}
+                    normalBusinessHoursTo={office.normalBusinessHoursTo}
                     displayOffices={displayOffices}
                   />
                 );

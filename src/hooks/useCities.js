@@ -19,7 +19,7 @@ const useCities = (props) => {
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
   const offices = officesData.offices;
-  console.log(offices);
+  /*   console.log(offices); */
   let searchedCities = [];
   /*   console.log(cities); */
 
@@ -37,6 +37,7 @@ const useCities = (props) => {
 
   return {
     searchedCities,
+    offices,
     loading,
     error,
     displayDropdown,
