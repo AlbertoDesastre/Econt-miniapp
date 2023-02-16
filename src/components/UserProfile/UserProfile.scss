@@ -7,6 +7,10 @@ li.user-container {
   padding: 0.5rem;
 }
 
+li.active {
+  background-color: lightcoral;
+}
+
 li.user-selected {
   background-color: black;
   color: white;

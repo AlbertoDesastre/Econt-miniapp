@@ -29,7 +29,13 @@ function App() {
     setSearchValue,
   } = useCities();
 
-  const { users } = useUsers();
+  const {
+    users,
+    userSelected,
+    setUserSelected,
+    userSelectedInfo,
+    setUserSelectedInfo,
+  } = useUsers();
   console.log(users);
 
   const onClick = () => {
@@ -48,6 +54,9 @@ function App() {
               name={user.name}
               region={user.region}
               city={user.city}
+              userSelected={userSelected}
+              setUserSelected={setUserSelected}
+              users={users}
             />
           );
         })}
