@@ -1,23 +1,23 @@
 import "./UserProfile.scss";
 
-const UserProfile = () => {
+const UserProfile = ({ id, name, region, city }) => {
   return (
-    <article className="user-profile user-container">
-      <ul className="ul-user">
+    <li key={id} className="user-container">
+      <ul className="user-profile">
         <li className="user-name">
           <p>Username: </p>
-          <p>Oliver Atom</p>
+          <p>{name}</p>
         </li>
         <li className="user-region">
           <p>Region / District: </p>
-          <p>Plovdiv</p>
+          <p>{region}</p>
         </li>
         <li className="user-city">
           <p>City: </p>
-          <p>Asenovgrad</p>
+          <p>{city}</p>
         </li>
       </ul>
-    </article>
+    </li>
   );
 };
 

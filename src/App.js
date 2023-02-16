@@ -28,6 +28,7 @@ function App() {
   } = useCities();
 
   const { users } = useUsers();
+  console.log(users);
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -38,7 +39,16 @@ function App() {
       <Header imgSrc={econt} />
 
       <UserSelection>
-        <UserProfile />
+        {users.map((user) => {
+          return (
+            <UserProfile
+              id={user.id}
+              name={user.name}
+              region={user.region}
+              city={user.city}
+            />
+          );
+        })}
       </UserSelection>
       <MainContent
         error={error}
