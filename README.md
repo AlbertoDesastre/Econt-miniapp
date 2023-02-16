@@ -19,6 +19,7 @@ Pendiente de renderizarlo solo cuando la llamada a la API haya sido terminada.
   Dejarme seleccionar usuario con un prompt o form.
   Que las ciudades se filtren automaticamente segun la ciudad que tiene seleccionado el usuario.
   Hacer otra llamada a la api pero con las oficinas mas cercanas
+  Poder desplegar informacion del usuario activo
 
 - Modulo API:
   Crear un dropdown para que el usuario elija ciudades, oficinas en X ciduades, y calles.

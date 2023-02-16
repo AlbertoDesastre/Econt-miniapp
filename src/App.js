@@ -29,14 +29,8 @@ function App() {
     setSearchValue,
   } = useCities();
 
-  const {
-    users,
-    userSelected,
-    setUserSelected,
-    userSelectedInfo,
-    setUserSelectedInfo,
-  } = useUsers();
-  console.log(users);
+  const { users, userSelected, setUserSelected } = useUsers();
+  /*   console.log(users); */
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
@@ -56,7 +50,6 @@ function App() {
               city={user.city}
               userSelected={userSelected}
               setUserSelected={setUserSelected}
-              users={users}
             />
           );
         })}

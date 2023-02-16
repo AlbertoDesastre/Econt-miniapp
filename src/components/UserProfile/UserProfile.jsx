@@ -7,8 +7,6 @@ const UserProfile = ({
   city,
   userSelected,
   setUserSelected,
-  setUserSelectedInfo,
-  users,
 }) => {
   let active = false;
   if (id === userSelected) {
@@ -17,7 +15,6 @@ const UserProfile = ({
 
   const onClick = () => {
     setUserSelected(id);
-    /*     setUserSelectedInfo(users[userSelected]); */
   };
 
   return (
