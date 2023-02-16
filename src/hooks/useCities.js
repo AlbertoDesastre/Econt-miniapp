@@ -5,10 +5,19 @@ const useCities = (props) => {
   const [displayDropdown, setDisplayDropdown] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-  const { data, loading, error } = usePostApi(
-    process.env.REACT_APP_API_URL_CITIES,
-    { countryCode: "BGR" }
-  );
+  const callCities = usePostApi(process.env.REACT_APP_API_URL_CITIES, {
+    countryCode: "BGR",
+  });
+
+  const callOffices = usePostApi(process.env.REACT_APP_API_URL_OFFICES, {
+    countryCode: "BGR",
+    cityID: 47,
+  });
+  const { data, loading, error } = callCities;
+  const { data: offices } = callOffices;
+
+  console.log(offices);
+
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
   let searchedCities = [];
