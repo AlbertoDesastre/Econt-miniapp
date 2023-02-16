@@ -6,8 +6,11 @@ const DropdownItem = ({
   nameEn,
   regionNameEn,
   expressCityDeliveries,
+  cityId,
 }) => {
-  /*  console.log("key", id); */
+  /*   if (nameEn === "Bansko") {
+    console.log("City", nameEn, "Region", regionNameEn, "CITY-ID", cityId);
+  } */
   return (
     // to be displayed as a grid, probably
     <li key={id} className="dropdown-li">

@@ -17,7 +17,6 @@ import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  console.log("hello");
   const {
     cities,
     searchedCities,
@@ -83,6 +82,7 @@ function App() {
                     nameEn={city.nameEn}
                     regionNameEn={city.regionNameEn}
                     expressCityDeliveries={city.expressCityDeliveries}
+                    cityId={city.id}
                   />
                 );
               })}
