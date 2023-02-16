@@ -14,12 +14,12 @@ const useCities = (props) => {
     cityID: 47,
   });
   const { data, loading, error } = callCities;
-  const { data: offices } = callOffices;
-
-  console.log(offices);
+  const { data: officesData } = callOffices;
 
   /* The cities are inside of an object, therefore I have to first get all the arrays and then do the map */
   const cities = data.cities;
+  const offices = officesData.offices;
+  console.log(offices);
   let searchedCities = [];
   /*   console.log(cities); */
 
