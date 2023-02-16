@@ -17,6 +17,7 @@ import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+  const [displayOffices, setDisplayOffices] = useState(true);
   const {
     cities,
     searchedCities,
@@ -60,7 +61,8 @@ function App() {
         onLoading={() => <LoadingMessage />}
       >
         <UserInputs>
-          <DropdownMenu title={"Cities"} />
+          {!displayOffices && <DropdownMenu title={"Cities"} />}
+          {displayOffices && <DropdownMenu title={"Offices"} />}
           <SearchCities
             searchValue={searchValue}
             setSearchValue={setSearchValue}
