@@ -2,7 +2,7 @@ import { useState } from "react";
 import DropdownItem from "../DropdownItem/DropdownItem";
 import "../DropdownMenu/DropdownMenu.scss";
 
-const DropdownSkeleton = () => {
+const DropdownSkeleton = ({ title }) => {
   // eslint-disable-next-line
   const [displayList, setDisplayList] = useState(false);
   const onClick = () => {
@@ -12,7 +12,7 @@ const DropdownSkeleton = () => {
   return (
     <div className="dropdown-container dropdown-skeleton">
       <p className="dropdown-title" onClick={onClick}>
-        Econt offices
+        {title}
       </p>
 
       <ul className="dropdown">

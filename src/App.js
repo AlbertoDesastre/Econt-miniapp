@@ -17,7 +17,7 @@ import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [displayOffices, setDisplayOffices] = useState(true);
+  const [displayOffices, setDisplayOffices] = useState(false);
   const changeDropdown = () => {
     setDisplayOffices(!displayOffices);
   };
@@ -78,11 +78,14 @@ function App() {
             Search
           </button>
         </UserInputs>
-        {!displayDropdown && <DropdownSkeleton />}
+        {!displayDropdown && <DropdownSkeleton title={"Available cities"} />}
+        {/* If an user wants to see the cities where Econt is available (!displayOffices)
+              a Dropdown with available cities will be displayed */}
         {displayDropdown && !loading && (
-          <DropdownMenu title={"Econt offices"}>
+          <DropdownMenu title={"Available cities"}>
             {displayDropdown &&
               !loading &&
+              !displayOffices &&
               searchedCities.map((city) => {
                 return (
                   <DropdownItem
