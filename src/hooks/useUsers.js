@@ -14,7 +14,14 @@ const useUsers = () => {
   /*   const { saveItems } = useLocalStorage("users", []);
   saveItems(users); */
 
-  return { users };
+  const [userSelected, setUserSelected] = useState(users[0].id);
+  /*   console.log(userSelected);
+   */
+  return {
+    users,
+    userSelected,
+    setUserSelected,
+  };
 };
 
 export default useUsers;

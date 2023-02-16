@@ -1,19 +1,42 @@
 import "./UserProfile.scss";
 
-const UserProfile = ({ id, name, region, city }) => {
+const UserProfile = ({
+  id,
+  name,
+  region,
+  city,
+  userSelected,
+  setUserSelected,
+}) => {
+  let active = false;
+  if (id === userSelected) {
+    active = true;
+  }
+
+  const onClick = () => {
+    setUserSelected(id);
+  };
+
   return (
-    <li key={id} className="user-container">
-      <ul className="user-profile">
+    <li key={id} className={`user-container ${active ? "active" : null}`}>
+      <ul className="user-profile " onClick={onClick}>
         <li className="user-name">
-          <p>Username: </p>
+          <strong>
+            <p>Username: </p>{" "}
+          </strong>
           <p>{name}</p>
         </li>
         <li className="user-region">
-          <p>Region / District: </p>
-          <p>{region}</p>
+          <p>
+            {" "}
+            <strong>Region/District:</strong>{" "}
+          </p>
+          <p> {region}</p>
         </li>
         <li className="user-city">
-          <p>City: </p>
+          <strong>
+            <p>City: </p>
+          </strong>
           <p>{city}</p>
         </li>
       </ul>
