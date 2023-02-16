@@ -51,6 +51,7 @@ function App() {
               name={user.name}
               region={user.region}
               city={user.city}
+              cityId={user.cityId}
               userSelected={userSelected}
               setUserSelected={setUserSelected}
             />
@@ -82,7 +83,7 @@ function App() {
         {/* If an user wants to see the cities where Econt is available (!displayOffices)
               a Dropdown with available cities will be displayed */}
         {displayDropdown && !loading && (
-          <DropdownMenu title={"Available cities"}>
+          <DropdownMenu title={"Available places"}>
             {displayDropdown &&
               !loading &&
               !displayOffices &&
@@ -95,6 +96,23 @@ function App() {
                     regionNameEn={city.regionNameEn}
                     expressCityDeliveries={city.expressCityDeliveries}
                     cityId={city.id}
+                  />
+                );
+              })}
+
+            {displayDropdown &&
+              !loading &&
+              displayOffices &&
+              searchedCities.map((city) => {
+                return (
+                  <DropdownItem
+                    id={1}
+                    postalCode={1}
+                    nameEn={1}
+                    regionNameEn={1}
+                    expressCityDeliveries={1}
+                    cityId={1}
+                    displayOffices={displayOffices}
                   />
                 );
               })}
