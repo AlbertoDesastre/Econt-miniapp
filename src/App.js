@@ -17,6 +17,7 @@ import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+  console.log("hello");
   const {
     cities,
     searchedCities,
