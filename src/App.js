@@ -17,8 +17,12 @@ import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
+  const [displayOffices, setDisplayOffices] = useState(false);
+  const changeDropdown = () => {
+    setDisplayOffices(!displayOffices);
+  };
   const {
-    cities,
+    offices,
     searchedCities,
     loading,
     error,
@@ -29,6 +33,7 @@ function App() {
   } = useCities();
 
   const { users, userSelected, setUserSelected } = useUsers();
+  console.log(offices);
   /*   console.log(users); */
 
   const onClick = () => {
@@ -47,6 +52,7 @@ function App() {
               name={user.name}
               region={user.region}
               city={user.city}
+              cityId={user.cityId}
               userSelected={userSelected}
               setUserSelected={setUserSelected}
             />
@@ -60,7 +66,12 @@ function App() {
         onLoading={() => <LoadingMessage />}
       >
         <UserInputs>
-          <DropdownMenu title={"Cities"} />
+          {!displayOffices && (
+            <DropdownMenu title={"Cities"} changeDropdown={changeDropdown} />
+          )}
+          {displayOffices && (
+            <DropdownMenu title={"Offices"} changeDropdown={changeDropdown} />
+          )}
           <SearchCities
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -69,11 +80,14 @@ function App() {
             Search
           </button>
         </UserInputs>
-        {!displayDropdown && <DropdownSkeleton />}
+        {!displayDropdown && <DropdownSkeleton title={"Available cities"} />}
+        {/* If an user wants to see the cities where Econt is available (!displayOffices)
+              a Dropdown with available cities will be displayed */}
         {displayDropdown && !loading && (
-          <DropdownMenu title={"Econt offices"}>
+          <DropdownMenu title={"Available places"}>
             {displayDropdown &&
               !loading &&
+              !displayOffices &&
               searchedCities.map((city) => {
                 return (
                   <DropdownItem
@@ -83,6 +97,23 @@ function App() {
                     regionNameEn={city.regionNameEn}
                     expressCityDeliveries={city.expressCityDeliveries}
                     cityId={city.id}
+                  />
+                );
+              })}
+
+            {displayDropdown &&
+              !loading &&
+              displayOffices &&
+              offices.map((office) => {
+                return (
+                  <DropdownItem
+                    id={office.id}
+                    postalCode={office.address.city.postCode}
+                    nameEn={office.nameEn}
+                    address={office.address.fullAddressEn}
+                    normalBusinessHoursFrom={office.normalBusinessHoursFrom}
+                    normalBusinessHoursTo={office.normalBusinessHoursTo}
+                    displayOffices={displayOffices}
                   />
                 );
               })}

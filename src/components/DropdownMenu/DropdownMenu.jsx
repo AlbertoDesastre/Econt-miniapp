@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./DropdownMenu.scss";
 
-const DropdownMenu = ({ title, children }) => {
+const DropdownMenu = ({ title, changeDropdown, children }) => {
   return (
-    <div className="dropdown-container">
+    <div className="dropdown-container" onClick={changeDropdown}>
       <p className="dropdown-title">{title}</p>
       {<ul className="dropdown">{children}</ul>}
     </div>

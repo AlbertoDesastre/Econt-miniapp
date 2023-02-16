@@ -5,6 +5,7 @@ const UserProfile = ({
   name,
   region,
   city,
+  cityId,
   userSelected,
   setUserSelected,
 }) => {
@@ -38,6 +39,12 @@ const UserProfile = ({
             <p>City: </p>
           </strong>
           <p>{city}</p>
+        </li>
+        <li className="user-city_id">
+          <strong>
+            <p>CityID: </p>
+          </strong>
+          <p>{cityId}</p>
         </li>
       </ul>
     </li>
