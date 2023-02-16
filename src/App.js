@@ -11,6 +11,10 @@ import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
 import SearchCities from "./components/SearchCities/SearchCities";
 import MainContent from "./components/MainContent/MainContent";
 import UserInputs from "./components/UserInputs/UserInputs";
+import UserSelection from "./components/UserSelection/UserSelection";
+import UserProfile from "./components/UserProfile/UserProfile";
+import useUsers from "./hooks/useUsers";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const {
@@ -24,6 +28,9 @@ function App() {
     setSearchValue,
   } = useCities();
 
+  const { users } = useUsers();
+  console.log(users);
+
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
   };
@@ -31,6 +38,19 @@ function App() {
   return (
     <div className="App">
       <Header imgSrc={econt} />
+
+      <UserSelection>
+        {users.map((user) => {
+          return (
+            <UserProfile
+              id={user.id}
+              name={user.name}
+              region={user.region}
+              city={user.city}
+            />
+          );
+        })}
+      </UserSelection>
       <MainContent
         error={error}
         loading={loading}
