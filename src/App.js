@@ -45,18 +45,12 @@ function App() {
   return (
     <div className="App">
       <Header imgSrc={econt} />
-
       <UserSelection>
         {users.map((user) => {
           return (
             <UserProfile
-              id={user.id}
-              name={user.name}
-              region={user.region}
-              city={user.city}
-              cityId={user.cityId}
-              userSelected={userSelected}
-              setUserSelected={setUserSelected}
+              user={user}
+              userSelection={[userSelected, setUserSelected]}
             />
           );
         })}
@@ -72,7 +66,6 @@ function App() {
             title={displayOffices ? "Offices" : "Cities"}
             changeDropdown={changeDropdown}
           />
-
           <SearchCities
             searchValue={searchValue}
             setSearchValue={setSearchValue}
