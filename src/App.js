@@ -15,6 +15,8 @@ import UserSelection from "./components/UserSelection/UserSelection";
 import UserProfile from "./components/UserProfile/UserProfile";
 import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
+import Office from "./components/Office/Office";
+import City from "./components/City/City";
 
 function App() {
   const [displayOffices, setDisplayOffices] = useState(false);
@@ -33,7 +35,7 @@ function App() {
   } = useCities();
 
   const { users, userSelected, setUserSelected } = useUsers();
-  console.log(offices);
+  /*  console.log(offices); */
   /*   console.log(users); */
 
   const onClick = () => {
@@ -92,11 +94,8 @@ function App() {
                 return (
                   <DropdownItem
                     id={city.id}
-                    postalCode={city.postCode}
-                    nameEn={city.nameEn}
-                    regionNameEn={city.regionNameEn}
-                    expressCityDeliveries={city.expressCityDeliveries}
-                    cityId={city.id}
+                    city={city}
+                    onCity={(city) => <City city={city} />}
                   />
                 );
               })}
@@ -107,6 +106,8 @@ function App() {
               offices.map((office) => {
                 return (
                   <DropdownItem
+                    office={office}
+                    onOffice={() => <Office />}
                     id={office.id}
                     postalCode={office.address.city.postCode}
                     nameEn={office.nameEn}
