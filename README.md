@@ -11,6 +11,8 @@ Pendiente de renderizarlo solo cuando la llamada a la API haya sido terminada.
 
 - Si abro la pagina y le doy muy rapido al boton de Search no se muestra ni el Dropdown Skeleton ni nada hasta que se haya terminado de cargar. Eliminar condicionales a priori innecesarios y luego meterlos con cabeza
 
+- El dropdown skeleton con HTML fijo ya no renderiza nada. Revisar
+
 # Pendientes.
 
 - Modulo usuario:
