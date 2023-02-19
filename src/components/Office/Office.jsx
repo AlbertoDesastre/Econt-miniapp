@@ -1,26 +1,32 @@
-const Office = ({
-  id,
-  nameEn,
-  regionNameEn,
-  expressCityDeliveries,
-  postalCode,
-}) => {
+const Office = (props) => {
+  const {
+    nameEn,
+    address: {
+      fullAddressEn,
+      city: { postCode },
+    },
+    normalBusinessHoursFrom,
+    normalBusinessHoursTo,
+  } = props.office;
+
+  const openFrom = new Date(normalBusinessHoursFrom).toLocaleTimeString();
+  const openTo = new Date(normalBusinessHoursTo).toLocaleTimeString();
+
   return (
-    // to be displayed as a grid, probably
-    <li key={id} className="dropdown-li">
+    <>
       <p>
-        <strong>{nameEn} </strong>, in {regionNameEn}
+        <strong>{nameEn}</strong>
       </p>
       <p>
-        {" "}
-        <strong> Has express delivery?</strong>{" "}
-        {expressCityDeliveries ? "Yes!" : "No"}{" "}
+        <strong>Address: </strong> {fullAddressEn}
       </p>
       <p>
-        {" "}
-        <strong> Postal code:</strong> {postalCode}
+        <strong>Postal code:</strong> {postCode}
       </p>
-    </li>
+      <p>
+        <strong>Open from: </strong> {openFrom} <strong> to: </strong> {openTo}
+      </p>
+    </>
   );
 };
 

@@ -106,15 +106,9 @@ function App() {
               offices.map((office) => {
                 return (
                   <DropdownItem
-                    office={office}
-                    onOffice={() => <Office />}
                     id={office.id}
-                    postalCode={office.address.city.postCode}
-                    nameEn={office.nameEn}
-                    address={office.address.fullAddressEn}
-                    normalBusinessHoursFrom={office.normalBusinessHoursFrom}
-                    normalBusinessHoursTo={office.normalBusinessHoursTo}
-                    displayOffices={displayOffices}
+                    office={office}
+                    onOffice={(office) => <Office office={office} />}
                   />
                 );
               })}
