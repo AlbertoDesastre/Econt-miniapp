@@ -68,12 +68,11 @@ function App() {
         onLoading={() => <LoadingMessage />}
       >
         <UserInputs>
-          {!displayOffices && (
-            <DropdownMenu title={"Cities"} changeDropdown={changeDropdown} />
-          )}
-          {displayOffices && (
-            <DropdownMenu title={"Offices"} changeDropdown={changeDropdown} />
-          )}
+          <DropdownMenu
+            title={displayOffices ? "Offices" : "Cities"}
+            changeDropdown={changeDropdown}
+          />
+
           <SearchCities
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -86,7 +85,9 @@ function App() {
         {/* If an user wants to see the cities where Econt is available (!displayOffices)
               a Dropdown with available cities will be displayed */}
         {displayDropdown && (
-          <DropdownMenu title={"Available places"}>
+          <DropdownMenu
+            title={displayOffices ? "Available offices" : "Available cities"}
+          >
             {!loading &&
               !displayOffices &&
               searchedCities.map((city) => {
@@ -99,7 +100,8 @@ function App() {
                 );
               })}
 
-            {displayOffices &&
+            {!loading &&
+              displayOffices &&
               offices.map((office) => {
                 return (
                   <DropdownItem
