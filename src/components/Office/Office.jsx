@@ -8,7 +8,6 @@ const Office = (props) => {
     normalBusinessHoursFrom,
     normalBusinessHoursTo,
   } = props.office;
-
   const openFrom = new Date(normalBusinessHoursFrom).toLocaleTimeString();
   const openTo = new Date(normalBusinessHoursTo).toLocaleTimeString();
 

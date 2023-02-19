@@ -87,8 +87,7 @@ function App() {
               a Dropdown with available cities will be displayed */}
         {displayDropdown && !loading && (
           <DropdownMenu title={"Available places"}>
-            {displayDropdown &&
-              !loading &&
+            {!loading &&
               !displayOffices &&
               searchedCities.map((city) => {
                 return (
@@ -100,8 +99,7 @@ function App() {
                 );
               })}
 
-            {displayDropdown &&
-              !loading &&
+            {!loading &&
               displayOffices &&
               offices.map((office) => {
                 return (
