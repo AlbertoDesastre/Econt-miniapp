@@ -85,7 +85,7 @@ function App() {
         {!displayDropdown && <DropdownSkeleton title={"Available cities"} />}
         {/* If an user wants to see the cities where Econt is available (!displayOffices)
               a Dropdown with available cities will be displayed */}
-        {displayDropdown && !loading && (
+        {displayDropdown && (
           <DropdownMenu title={"Available places"}>
             {!loading &&
               !displayOffices &&
@@ -99,8 +99,7 @@ function App() {
                 );
               })}
 
-            {!loading &&
-              displayOffices &&
+            {displayOffices &&
               offices.map((office) => {
                 return (
                   <DropdownItem
