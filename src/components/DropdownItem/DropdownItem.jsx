@@ -1,6 +1,10 @@
 import "../DropdownMenu/DropdownMenu.scss";
 
 const DropdownItem = ({
+  city,
+  onCity,
+  office,
+  onOffice,
   id,
   postalCode,
   nameEn,
@@ -15,29 +19,14 @@ const DropdownItem = ({
   const openToDate = new Date(normalBusinessHoursTo);
   const openFrom = openFromDate.toLocaleTimeString();
   const openTo = openToDate.toLocaleTimeString();
-
-  console.log(openTo);
-
-  if (!displayOffices) {
-    return (
-      // to be displayed as a grid, probably
-      <li key={id} className="dropdown-li">
-        <p>
-          <strong>{nameEn} </strong>, in {regionNameEn}
-        </p>
-        <p>
-          {" "}
-          <strong> Has express delivery?</strong>{" "}
-          {expressCityDeliveries ? "Yes!" : "No"}{" "}
-        </p>
-        <p>
-          {" "}
-          <strong> Postal code:</strong> {postalCode}
-        </p>
-      </li>
-    );
-  }
+  /*  console.log(city); */
   return (
+    <li key={id} className="dropdown-li">
+      {city && onCity(city)}
+    </li>
+  );
+
+  /*   return (
     // to be displayed as a grid, probably
     <li key={id} className="dropdown-li">
       <p>
@@ -53,7 +42,7 @@ const DropdownItem = ({
         <strong>Open from: </strong> {openFrom} <strong> to: </strong> {openTo}
       </p>
     </li>
-  );
+  ); */
 };
 
 export default DropdownItem;
