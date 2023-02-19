@@ -23,10 +23,17 @@ const DropdownItem = ({
       // to be displayed as a grid, probably
       <li key={id} className="dropdown-li">
         <p>
-          {nameEn}, in {regionNameEn}
+          <strong>{nameEn} </strong>, in {regionNameEn}
         </p>
-        <p>Has express delivery? {expressCityDeliveries ? "Yes!" : "No"} </p>
-        <p>Postal code: {postalCode}</p>
+        <p>
+          {" "}
+          <strong> Has express delivery?</strong>{" "}
+          {expressCityDeliveries ? "Yes!" : "No"}{" "}
+        </p>
+        <p>
+          {" "}
+          <strong> Postal code:</strong> {postalCode}
+        </p>
       </li>
     );
   }
