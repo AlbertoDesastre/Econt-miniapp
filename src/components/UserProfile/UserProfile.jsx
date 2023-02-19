@@ -1,19 +1,13 @@
 import "./UserProfile.scss";
 
-const UserProfile = ({
-  id,
-  name,
-  region,
-  city,
-  cityId,
-  userSelected,
-  setUserSelected,
-}) => {
+const UserProfile = (props) => {
+  const { id, name, region, city, cityId } = props.user;
+  const [userSelected, setUserSelected] = props.userSelection;
+
   let active = false;
   if (id === userSelected) {
     active = true;
   }
-
   const onClick = () => {
     setUserSelected(id);
   };

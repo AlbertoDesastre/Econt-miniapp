@@ -15,6 +15,8 @@ import UserSelection from "./components/UserSelection/UserSelection";
 import UserProfile from "./components/UserProfile/UserProfile";
 import useUsers from "./hooks/useUsers";
 import useLocalStorage from "./hooks/useLocalStorage";
+import Office from "./components/Office/Office";
+import City from "./components/City/City";
 
 function App() {
   const [displayOffices, setDisplayOffices] = useState(false);
@@ -33,7 +35,7 @@ function App() {
   } = useCities();
 
   const { users, userSelected, setUserSelected } = useUsers();
-  console.log(offices);
+  /*  console.log(offices); */
   /*   console.log(users); */
 
   const onClick = () => {
@@ -43,18 +45,12 @@ function App() {
   return (
     <div className="App">
       <Header imgSrc={econt} />
-
       <UserSelection>
         {users.map((user) => {
           return (
             <UserProfile
-              id={user.id}
-              name={user.name}
-              region={user.region}
-              city={user.city}
-              cityId={user.cityId}
-              userSelected={userSelected}
-              setUserSelected={setUserSelected}
+              user={user}
+              userSelection={[userSelected, setUserSelected]}
             />
           );
         })}
@@ -66,12 +62,10 @@ function App() {
         onLoading={() => <LoadingMessage />}
       >
         <UserInputs>
-          {!displayOffices && (
-            <DropdownMenu title={"Cities"} changeDropdown={changeDropdown} />
-          )}
-          {displayOffices && (
-            <DropdownMenu title={"Offices"} changeDropdown={changeDropdown} />
-          )}
+          <DropdownMenu
+            title={displayOffices ? "Offices" : "Cities"}
+            changeDropdown={changeDropdown}
+          />
           <SearchCities
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -83,37 +77,30 @@ function App() {
         {!displayDropdown && <DropdownSkeleton title={"Available cities"} />}
         {/* If an user wants to see the cities where Econt is available (!displayOffices)
               a Dropdown with available cities will be displayed */}
-        {displayDropdown && !loading && (
-          <DropdownMenu title={"Available places"}>
-            {displayDropdown &&
-              !loading &&
+        {displayDropdown && (
+          <DropdownMenu
+            title={displayOffices ? "Available offices" : "Available cities"}
+          >
+            {!loading &&
               !displayOffices &&
               searchedCities.map((city) => {
                 return (
                   <DropdownItem
                     id={city.id}
-                    postalCode={city.postCode}
-                    nameEn={city.nameEn}
-                    regionNameEn={city.regionNameEn}
-                    expressCityDeliveries={city.expressCityDeliveries}
-                    cityId={city.id}
+                    city={city}
+                    onCity={(city) => <City city={city} />}
                   />
                 );
               })}
 
-            {displayDropdown &&
-              !loading &&
+            {!loading &&
               displayOffices &&
               offices.map((office) => {
                 return (
                   <DropdownItem
                     id={office.id}
-                    postalCode={office.address.city.postCode}
-                    nameEn={office.nameEn}
-                    address={office.address.fullAddressEn}
-                    normalBusinessHoursFrom={office.normalBusinessHoursFrom}
-                    normalBusinessHoursTo={office.normalBusinessHoursTo}
-                    displayOffices={displayOffices}
+                    office={office}
+                    onOffice={(office) => <Office office={office} />}
                   />
                 );
               })}
