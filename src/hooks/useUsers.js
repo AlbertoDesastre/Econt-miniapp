@@ -27,6 +27,7 @@ const useUsers = () => {
   saveItems(users); */
 
   const [userSelected, setUserSelected] = useState(users[0].id);
+  const [userPreferredCity, setUserPreferredCity] = useState(1);
   /*   console.log(userSelected);
    */
   return {

@@ -4,7 +4,7 @@ import LoadingMessage from "./components/LoadingMessage/LoadingMessage";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import DropdownItem from "./components/DropdownItem/DropdownItem";
 import { useState } from "react";
-import useCities from "./hooks/useCities";
+import useEcont from "./hooks/useEcont";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
 import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
@@ -32,11 +32,11 @@ function App() {
     searchValue,
     setDisplayDropdown,
     setSearchValue,
-  } = useCities();
+  } = useEcont();
 
   const { users, userSelected, setUserSelected } = useUsers();
   /*  console.log(offices); */
-  /*   console.log(users); */
+  console.log(userSelected);
 
   const onClick = () => {
     setDisplayDropdown(!displayDropdown);
