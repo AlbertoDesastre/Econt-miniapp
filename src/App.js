@@ -4,7 +4,8 @@ import LoadingMessage from "./components/LoadingMessage/LoadingMessage";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import DropdownItem from "./components/DropdownItem/DropdownItem";
 import { useState } from "react";
-import useEcont from "./hooks/useEcont";
+import useCities from "./hooks/useCities";
+import useOffices from "./hooks/useOffices";
 import Header from "./components/Header/Header";
 import econt from "./assets/econt.jpg";
 import DropdownSkeleton from "./components/DropdownSkeleton/DropdownSekeleton";
@@ -24,15 +25,15 @@ function App() {
     setDisplayOffices(!displayOffices);
   };
   const {
-    offices,
-    searchedCities,
     loading,
     error,
     displayDropdown,
     searchValue,
+    searchedCities,
     setDisplayDropdown,
     setSearchValue,
-  } = useEcont();
+  } = useCities();
+  const { offices, loadingOffices, errorOffices } = useOffices();
 
   const { users, userSelected, setUserSelected } = useUsers();
   /*  console.log(offices); */
